@@ -18,11 +18,16 @@ LOCAL_PATH := device/samsung/j1xlte
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk)
+
+### Ubuntu Touch ###
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/runtime_libart.mk)
+$(call inherit-product, vendor/halium/config/halium.mk)
 
 # Inherit common Lineage phone.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+#$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+### End Ubuntu Touch ###
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := lineage_j1xlte

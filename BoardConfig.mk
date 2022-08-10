@@ -61,3 +61,8 @@ TARGET_LD_SHIM_LIBS += \
 # Legacy BLOB Support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/hw/rild=27
+
+### Ubuntu Touch ###
+# Disable HiddenApi
+UNSAFE_DISABLE_HIDDENAPI_FLAGS := true
+### End Ubuntu Touch ###
