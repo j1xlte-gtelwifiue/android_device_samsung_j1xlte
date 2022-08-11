@@ -3,6 +3,8 @@ This **should** work on J120F and similar devices. Tested on a J120W8
 
 **Your warranty is now void. I am not responsible for bricked devices, data loss, or any other adverse effects caused by this rom. Install at your own risk.**
 
+**This port is in a very early state!** Many features don't work, and it cannot currently function as a phone. See the [devices.ubuntu-touch.io](https://devices.ubuntu-touch.io/device/samsung-j1xlte/) page for more details.
+
 ## Installing
 **BACKUP YOUR DATA BEFORE CONTINUING!**
 
@@ -27,7 +29,7 @@ exit
 ```
 10. From your computer, with your phone plugged in, run `path/to/halium-install -p ut -s path/to/rootfs.tar.gz path/to/system.img`. This will ask for a password which will be used to unlock your phone.
 11. In TWRP, go to Reboot > System > Do Not Install
-12. As your phone is rebooting, hold Power, Home, and Volume Down (to enter Download Mode). Do not use TWRP to enter Download Mode, it doesn't work. Press Volume Up when your phone turns on to confirm entering Download Mode. If you miss this step and boot into your previous ROM, restart your phone and try again.
+12. As your phone is rebooting, hold Power, Home, and Volume Down (to enter Download Mode). Do not use TWRP to enter Download Mode, it doesn't work. Press Volume Up when your phone turns on to confirm entering Download Mode. If you miss this step and boot into your previous rom, restart your phone and try again.
 13. From your computer, with your phone plugged in, run `heimdall flash --BOOT path/to/halium-boot.img`
 14. That's it! Your phone should reboot into Ubuntu Touch.
 
@@ -51,14 +53,10 @@ These instructions are intended for developers, and may not be perfect. Precompi
 ```
 repo init -u https://github.com/j1xlte-gtelwifiue/halium -b halium-10.0 --depth=1
 repo sync -c -j 16
-```
-3. Put the [device-specific manifest](https://gist.github.com/j1xlte-gtelwifiue/01604e2f15225a3c256beb8e197f0ab9) in `BUILDDIR/halium/devices/manifests/samsung_j1xlte.xml`
-4. From the root of your BUILDDIR, run
-```
 ./halium/devices/setup j1xlte
 ```
-5. Remove the file `BUILDDIR/hybris-patches/external/v8/0001-blueprints-Allow-building-on-both-Linux-and-macOS.patch` (it is already applied)
-6. From the root of your BUILDDIR, run
+3. Remove the file `BUILDDIR/hybris-patches/external/v8/0001-blueprints-Allow-building-on-both-Linux-and-macOS.patch` (it is already applied)
+4. From the root of your BUILDDIR, run
 ```
 ./hybris-patches/apply-patches.sh --mb
 ./device/samsung/j1xlte/update-initramfs.sh
@@ -68,9 +66,10 @@ export LANG=C USE_HOST_LEX=yes TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
 mka mkbootimg
 mka halium-boot
 mka e2fsdroid
+mkdir -p out/target/product/j1xlte/recovery/root/system/etc
 mka systemimage
 ```
-7. Done! Your files are `BUILDDIR/out/target/product/j1xlte/halium-boot.img and system.img`
+5. Done! Your files are `BUILDDIR/out/target/product/j1xlte/halium-boot.img and system.img`
 
 ## Rootfs
 You can download the premade rootfs from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page. These instructions assume you know how to add files to an archive and have a basic knowledge of linux commands.
