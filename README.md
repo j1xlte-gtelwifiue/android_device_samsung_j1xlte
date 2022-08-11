@@ -13,14 +13,14 @@ You will need a MicroSD card to install Ubuntu Touch on this device, as it's sys
 This guide assumes a linux computer. Steps may not be the same on Windows or MacOS.
 
 1. If you haven't already done so, enable OEM Unlock and USB Debugging in Developer Settings in Android. (You may need to enable Developer Mode first)
-2. Get the required files. Precompiled files can be downloaded from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page. For building instructions, see [Building](#Building) and [Rootfs](#Rootfs)
+2. Get the required files. Precompiled files (rootfs.tar.gz, halium-boot.img, and system.img) can be downloaded from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page. For building instructions, see [Building](#Building) and [Rootfs](#Rootfs)
 3. Install [Heimdall](https://glassechidna.com.au/heimdall/), [ADB](https://developer.android.com/studio/releases/platform-tools), and clone the [halium-install](https://gitlab.com/JBBgameich/halium-install) repository
 4. Install TWRP on your phone from [here](https://forum.xda-developers.com/t/recovery-3-3-1-0-unofficial-teamwin-recovery-project-for-samsung-galaxy-j1-2016.3852578/)
 5. Put your MicroSD card into the phone while it is powered off (**BACKUP YOUR DATA** - it will be formatted!).
 6. Boot into TWRP by holding Power, Home, and Volume Up while turning on your phone.
-7. In TWRP, go to Wipe > Advanced Wipe > Select Micro SD Card > Repair or Change File System > Change File System > EXT4 \*\***THIS WILL FORMAT YOUR SD CARD!**\*\*
-8. In TWRP, go to Mount > Unselect Micro SD Card and Data
-9. From your computer, with your phone plugged in (still in TWRP, after the previous operation completed), run the following commands (this tricks halium into thinking the SD card is the userdata partition)
+7. In TWRP, go to Wipe > Advanced Wipe > Select Micro SD Card > Repair or Change File System > Change File System > EXT4, and swipe to confirm. \*\***THIS WILL FORMAT YOUR SD CARD!**\*\*
+8. In TWRP, go to Mount > Unselect external_sd and Data
+9. From your computer, with your phone plugged in, run the following commands (this tricks halium into thinking the SD card is the userdata partition)
 ```
 adb shell
 tune2fs -L userdata /dev/block/mmcblk1p1
