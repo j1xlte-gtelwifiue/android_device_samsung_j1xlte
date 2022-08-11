@@ -46,6 +46,10 @@ path/to/halium-install -p ut -s path/to/rootfs.tar.gz path/to/system.img
 6. From your computer, with your phone plugged in, run `heimdall flash --BOOT path/to/halium-boot.img`
 7. That's it! Your phone should reboot into newly updated Ubuntu Touch.
 
+## Fixes to known issues
+- WiFi will not reconnect by default. To fix this, run `nmtui` on the device, select Edit a connection, select your WiFi connection, empty the Device field, select <OK> and quit.
+- On the first boot, the device may get stuck on the loading screen. Simply restart the device (via ssh with `sudo reboot`).
+
 ## Building
 These instructions are intended for developers, and may not be perfect. Precompiled files can be downloaded from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page.
 1. Make a build directory (e.g. `~/samsung-j1xlte/halium`). This will be BUILDDIR in the following commands.
