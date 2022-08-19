@@ -63,6 +63,6 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/hw/rild=27
 
 ### Ubuntu Touch ###
-# Disable HiddenApi
 UNSAFE_DISABLE_HIDDENAPI_FLAGS := true
+BOOT_RAMDISK_SEANDROIDENFORCE := true
 ### End Ubuntu Touch ###
