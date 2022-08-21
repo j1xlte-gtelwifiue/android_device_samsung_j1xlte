@@ -28,10 +28,9 @@ mount /dev/block/mmcblk1p1 /data/
 exit
 ```
 10. From your computer, with your phone plugged in, run `path/to/halium-install -p ut -s path/to/rootfs.tar.gz path/to/system.img`. This will ask for a password which will be used to unlock your phone.
-11. In TWRP, go to Reboot > System > Do Not Install
-12. As your phone is rebooting, hold Power, Home, and Volume Down (to enter Download Mode). Do not use TWRP to enter Download Mode, it doesn't work. Press Volume Up when your phone turns on to confirm entering Download Mode. If you miss this step and boot into your previous rom, restart your phone and try again.
-13. From your computer, with your phone plugged in, run `heimdall flash --BOOT path/to/halium-boot.img`
-14. That's it! Your phone should reboot into Ubuntu Touch.
+11. In TWRP, go to Reboot > Download > Do Not Install
+12. From your computer, with your phone plugged in, run `heimdall flash --BOOT path/to/halium-boot.img`
+13. That's it! Your phone should reboot into Ubuntu Touch.
 
 ## Updating
 1. Get the updated rootfs, halium-boot.img and system.img
@@ -41,10 +40,9 @@ exit
 adb shell mount /dev/block/mmcblk1p1 /data/
 path/to/halium-install -p ut -s path/to/rootfs.tar.gz path/to/system.img
 ```
-4. In TWRP, go to Reboot > System > Do Not Install
-5. As your phone is rebooting, hold Power, Home, and Volume Down (to enter Download Mode). Do not use TWRP to enter Download Mode, it doesn't work. Press Volume Up when your phone turns on to confirm entering Download Mode. If you miss this step and boot into Ubuntu Touch, restart your phone and try again.
-6. From your computer, with your phone plugged in, run `heimdall flash --BOOT path/to/halium-boot.img`
-7. That's it! Your phone should reboot into newly updated Ubuntu Touch.
+4. In TWRP, go to Reboot > Download > Do Not Install
+5. From your computer, with your phone plugged in, run `heimdall flash --BOOT path/to/halium-boot.img`
+6. That's it! Your phone should reboot into newly updated Ubuntu Touch.
 
 ## Fixes to known issues
 - WiFi will not reconnect by default. To fix this, run `nmtui` on the device, select Edit a connection, select your WiFi connection, empty the Device field, select <OK> and quit.
