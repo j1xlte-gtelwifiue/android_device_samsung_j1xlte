@@ -134,6 +134,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/touch-android9.pa:system/halium/etc/pulse/touch-android9.pa \
     $(LOCAL_PATH)/ubuntu/gbinder.conf:system/halium/etc/gbinder.conf \
     $(LOCAL_PATH)/ubuntu/pulseaudio.override:system/halium/usr/share/upstart/sessions/pulseaudio.override
+
+PRODUCT_PACKAGES += \
+    selinux_policy
 ### End Ubuntu Touch ###
 
 # Properties
