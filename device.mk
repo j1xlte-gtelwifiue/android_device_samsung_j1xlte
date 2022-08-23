@@ -130,7 +130,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/ubuntu/halium.yaml:system/halium/etc/deviceinfo/devices/halium.yaml \
     $(LOCAL_PATH)/ubuntu/audiosystem-passthrough.conf:system/halium/usr/share/upstart/sessions/audiosystem-passthrough.conf \
-    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
     $(LOCAL_PATH)/ubuntu/touch-android9.pa:system/halium/etc/pulse/touch-android9.pa \
     $(LOCAL_PATH)/ubuntu/gbinder.conf:system/halium/etc/gbinder.conf \
     $(LOCAL_PATH)/ubuntu/pulseaudio.override:system/halium/usr/share/upstart/sessions/pulseaudio.override

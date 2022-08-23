@@ -43,7 +43,7 @@ load-module module-droid-card-28 rate=48000 quirks=-output_deep_buffer,+unload_c
 .endif
 
 .ifexists module-droid-hidl-28.so
-load-module module-droid-hidl-28
+load-module module-droid-hidl-28 helper=false
 .endif
 
 ### Automatically load the trust-store module
