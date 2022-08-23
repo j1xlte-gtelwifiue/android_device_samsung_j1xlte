@@ -136,7 +136,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/pulseaudio.override:system/halium/usr/share/upstart/sessions/pulseaudio.override
 
 PRODUCT_PACKAGES += \
-    selinux_policy
+    selinux_policy \
+    android.hardware.cas@1.1-service \
+    android.hardware.configstore@1.1-service \
+    android.hardware.media.omx@1.0-service \
+    android.hardware.sensors@2.0-service.mock \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.vibrator@1.0-impl \
+    vndservicemanager
 ### End Ubuntu Touch ###
 
 # Properties
