@@ -5,8 +5,11 @@ This **should** work on J120F and similar devices. Tested on a J120W8
 
 **This port is in a very early state!** Many features don't work, and it cannot currently function as a phone. See the [devices.ubuntu-touch.io](https://devices.ubuntu-touch.io/device/samsung-j1xlte/) page for more details.
 
+**The EFS partition MUST be backed up, as it might need to be be restored for the modem to boot correctly (see [#3](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/issues/3))!**
+You should make an image backup of the EFS partition, as TWRP does not backup hidden files in this partition (including the important `.nv_data.bak`). You can do this in TWRP with the command `dd if=/dev/block/bootdevice/by-name/EFS of=/external_sd/efs.img` (or wherever you want the backup).
+
 ## Installing
-**BACKUP YOUR DATA BEFORE CONTINUING!**
+**BACKUP YOUR DATA, ESPECIALLY EFS, BEFORE CONTINUING!**
 
 You will need a MicroSD card to install Ubuntu Touch on this device, as it's system and userdata partitions are too small.
 
