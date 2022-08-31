@@ -21,6 +21,10 @@ on boot
     write /proc/sys/vm/swappiness 160
     write /proc/sys/vm/vfs_cache_pressure 50
 
+    # Allow rild to access /dev/alarm
+    chown root radio /dev/alarm
+    chmod 660 /dev/alarm
+
 on fs
     # Permissions for LCD
     chown system system /sys/class/lcd/panel/lux
@@ -37,6 +41,68 @@ on fs
 
     # Restore the previous batt_capacity_max (if it exists)
     copy /efs/Battery/prev_batt_capacity_max /sys/class/power_supply/battery/batt_capacity_max
+
+on nonencrypted
+    # Mount filesystems here because kernel panics if they are mounted earlier
+    mount ext4 /dev/block/by-name/EFS /efs                             
+    mount ext4 /dev/block/by-name/CPEFS /cpefs                                     
+    mount ext4 /dev/block/by-name/CACHE /cache
+
+    # Do operations on newly mounted filesystems
+    mkdir /efs/SMS 0775 radio system
+    mkdir /efs/mc 0770 radio system
+    chown radio system /efs/mc
+    chmod 0770 /efs/mc
+    chown radio system /efs/mc/mc.dat
+    chmod 0640 /efs/mc/mc.dat
+    mkdir /efs/pfw_data 0760 spay spay
+    mkdir /efs/cpk 0771 radio system
+    chmod 0644 /efs/redata.bin
+    chmod 0644 /efs/cpk/redata.bin
+    chown radio radio /efs/h2k.dat
+    chown radio radio /efs/cpk/h2k.dat
+    chmod 0644 /efs/h2k.dat
+    chmod 0644 /efs/cpk/h2k.dat
+    chown system system /efs/drm/h2k
+    mkdir /efs/TEE  0770 radio system
+    mkdir /efs/bluetooth 0775 radio system
+    chown radio system /efs/bluetooth
+    chmod 0775 /efs/bluetooth
+    export MC_AUTH_TOKEN_PATH /efs
+    mkdir /efs/Battery 0775 radio system
+    chown radio system /efs/Battery
+    chmod 0775 /efs/Battery
+    copy /system/vendor/firmware/battery_data.dat /efs/Battery/battery_data.dat
+    chmod 0400 /efs/Battery/battery_data.dat
+    write /sys/class/power_supply/battery/batt_update_data "/efs/Battery/battery_data.dat"
+    chown system system /efs/calibration_data
+    chmod 0666 /efs/calibration_data
+    chown radio system /efs
+    chmod 0771 /efs
+    restorecon_recursive /efs
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown radio bluetooth /efs/bluetooth/bt_addr
+    chmod 0640 /efs/bluetooth/bt_addr
+    mkdir /efs/FactoryApp 0775 system system
+    mkdir /efs/imei 0775 radio system
+    mkdir /efs/wifi 0775 radio system
+    chown system wifi /efs/wifi/.mac.info
+    chmod 0660 /efs/wifi/.mac.info
+    copy /efs/Battery/prev_batt_capacity_max /sys/class/power_supply/battery/batt_capacity_max
+    copy /sys/class/power_supply/battery/batt_capacity_max /efs/Battery/prev_batt_capacity_max
+
+    chown system cache /cache
+    chmod 0770 /cache
+    restorecon_recursive /cache
+    mkdir /cache/recovery 0770 system cache
+    mkdir /cache/backup_stage 0700 system system
+    mkdir /cache/backup 0700 system system
+    mkdir /cache/lost+found 0770 root root
+    mkdir /data/cache 0770 system cache
+    mkdir /data/cache/recovery 0770 system cache
+    mkdir /data/cache/backup_stage 0700 system system
+    mkdir /data/cache/backup 0700 system system
+
 
 on property:sys.boot_completed=1
     write /proc/sys/vm/dirty_bytes 41943040

@@ -132,7 +132,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/audiosystem-passthrough.conf:system/halium/usr/share/upstart/sessions/audiosystem-passthrough.conf \
     $(LOCAL_PATH)/ubuntu/touch-android9.pa:system/halium/etc/pulse/touch-android9.pa \
     $(LOCAL_PATH)/ubuntu/gbinder.conf:system/halium/etc/gbinder.conf \
-    $(LOCAL_PATH)/ubuntu/pulseaudio.override:system/halium/usr/share/upstart/sessions/pulseaudio.override
+    $(LOCAL_PATH)/ubuntu/pulseaudio.override:system/halium/usr/share/upstart/sessions/pulseaudio.override \
+    $(LOCAL_PATH)/ubuntu/ril_subscription.conf:system/halium/etc/ofono/ril_subscription.conf
 
 PRODUCT_PACKAGES += \
     selinux_policy \
