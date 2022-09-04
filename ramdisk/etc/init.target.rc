@@ -117,3 +117,7 @@ on shutdown
     chmod 600 /sys/class/power_supply/battery/batt_capacity_max
     copy /sys/class/power_supply/battery/batt_capacity_max /efs/Battery/prev_batt_capacity_max
 
+service vendor.vibrator-1-0 android.hardware.vibrator@1.0-service_HYBRIS_DISABLED
+    disabled
+    oneshot
+    override
