@@ -49,7 +49,14 @@ path/to/halium-install -p ut -s path/to/rootfs.tar.gz path/to/system.img
 
 ## Fixes to known issues
 - WiFi will not reconnect by default. To fix this, run `nmtui` on the device, select Edit a connection, select your WiFi connection, empty the Device field, select <OK> and quit.
-- On the first boot, the device may get stuck on the loading screen. Simply restart the device (via ssh with `sudo reboot`).
+- Sometimes the device may get stuck on the Samsung logo. To try and fix this, reboot into TWRP and run the following commands
+```
+umount external_sd
+e2fsck -fy /dev/block/mmcblk1p1
+mount /dev/block/mmcblk1p1 external_sd
+e2fsck -fy external_sd/rootfs.img
+e2fsck -fy external_sd/android-rootfs.img
+```
 
 ## Building
 These instructions are intended for developers, and may not be perfect. Precompiled files can be downloaded from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page.
