@@ -17,6 +17,7 @@ if [ ! -f "$HALIUM_BOOT_DIR/get-initrd.sh" ]; then
 fi
 
 "$HALIUM_BOOT_DIR/get-initrd.sh" arm "$DEVICE_DIR/initramfs.gz"
+rm out/target/product/j1xlte/obj/ROOT/halium-boot_intermediates/halium-initramfs.gz &> /dev/null || true
 
 grep "BOARD_USE_LOCAL_INITRD := true" "$DEVICE_DIR/BoardConfig.mk" > /dev/null
 if [ ! $? -eq 0 ]; then
