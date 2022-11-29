@@ -103,6 +103,12 @@ on nonencrypted
     mkdir /data/cache/backup_stage 0700 system system
     mkdir /data/cache/backup 0700 system system
 
+    # Create file for RILD
+    mkdir /data/data/com.android.providers.telephony/ 770 radio system
+    mkdir /data/data/com.android.providers.telephony/databases 770 radio system
+    write /data/data/com.android.providers.telephony/databases/telephony.db ""
+    chown radio system /data/data/com.android.providers.telephony/databases/telephony.db
+    chmod 770 /data/data/com.android.providers.telephony/databases/telephony.db
 
 on property:sys.boot_completed=1
     write /proc/sys/vm/dirty_bytes 41943040
