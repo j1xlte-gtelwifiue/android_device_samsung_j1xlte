@@ -59,6 +59,7 @@ mount /dev/block/mmcblk1p1 external_sd
 e2fsck -fy external_sd/rootfs.img
 e2fsck -fy external_sd/android-rootfs.img
 ```
+- Sometimes audio will stop working. To fix this, you will need to boot stock Android. You may want to keep halium-boot.img and the stock bootimg on your phone to easily switch between them in TWRP.
 
 ## Building
 These instructions are intended for developers, and may not be perfect. Precompiled files can be downloaded from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page.
@@ -86,11 +87,12 @@ mka systemimage
 5. Done! Your files are `BUILDDIR/out/target/product/j1xlte/halium-boot.img and system.img`
 
 ## Rootfs
-You can download the premade rootfs from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page. These instructions assume you know how to add files to an archive and have a basic knowledge of linux commands.
+You can download the premade rootfs from the [releases](https://github.com/j1xlte-gtelwifiue/android_device_samsung_j1xlte/releases) page. These instructions assume you have a basic knowledge of linux commands.
 1. Download the default Ubuntu Touch rootfs from [here](https://ci.ubports.com/job/xenial-hybris-android9-rootfs-armhf/)
 2. Add a symbolic link from `/efs/` to `/android/efs/` to the rootfs
 3. Add an empty file `/etc/gbinder.conf`
-4. Done! You can now use this rootfs instead of the downloaded one.
+4. Install Ubuntu Touch
+5. Download the patched `ofono.deb` from [here](https://github.com/j1xlte-gtelwifiue/ofono_patches_j1xlte/releases) and install it on the phone. You will need to run `sudo mount -o remount,rw /` before using `apt` or `dpkg`
 
 ## Contributors
 [@j1xlte-gtelwifiue](https://github.com/j1xlte-gtelwifiue)
