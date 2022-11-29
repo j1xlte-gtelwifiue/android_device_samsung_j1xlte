@@ -50,7 +50,7 @@ path/to/halium-install -p ut -s path/to/rootfs.tar.gz path/to/system.img
 6. That's it! Your phone should reboot into newly updated Ubuntu Touch.
 
 ## Fixes to known issues
-- WiFi will not reconnect by default. To fix this, run `nmtui` on the device, select Edit a connection, select your WiFi connection, empty the Device field, select <OK> and quit.
+- WiFi will not reconnect by default. To fix this, run `nmcli c modify "YOUR WIFI SSID HERE" "802-11-wireless.mac-address" ""` on the device.
 - Sometimes the device may get stuck on the Samsung logo. To try and fix this, reboot into TWRP and run the following commands
 ```
 umount external_sd
