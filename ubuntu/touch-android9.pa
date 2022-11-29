@@ -37,12 +37,12 @@ load-module module-switch-on-port-available
 ### Switch when connected by default
 load-module module-switch-on-connect skip_abstract=yes
 
+### Allow PulseAudio Droid configuration part to be customized per-device
+.ifexists /etc/pulse/droid_card_custom.pa
+.include /etc/pulse/droid_card_custom.pa
+.else
 ### Automatically load the Pulseaudio Droid
-.ifexists module-droid-card-28.so
-load-module module-droid-card-28 rate=48000 quirks=-output_deep_buffer,+unload_call_exit
-.endif
-
-.ifexists module-droid-hidl-28.so
+load-module module-droid-card-28 rate=48000 voice_virtual_stream=true
 load-module module-droid-hidl-28 helper=false
 .endif
 
@@ -151,5 +151,5 @@ load-module module-filter-heuristics
 load-module module-filter-apply
 
 ### Make some devices default
-set-default-sink sink.fast
+set-default-sink sink.primary-out
 set-default-source source.droid
