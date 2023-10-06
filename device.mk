@@ -134,6 +134,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/gbinder.conf:system/halium/etc/gbinder.conf \
     $(LOCAL_PATH)/ubuntu/pulseaudio.override:system/halium/usr/share/upstart/sessions/pulseaudio.override \
     $(LOCAL_PATH)/ubuntu/ril_subscription.conf:system/halium/etc/ofono/ril_subscription.conf \
+    $(LOCAL_PATH)/ubuntu/90-device-specific-config.ini:system/halium/etc/usb-moded/90-device-specific-config.ini \
+    $(LOCAL_PATH)/ubuntu/upower.service:system/halium/usr/lib/systemd/system/upower.service \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/cardigan_1_status:$(TARGET_COPY_OUT_VENDOR)/etc/cardigan_1_status
     
