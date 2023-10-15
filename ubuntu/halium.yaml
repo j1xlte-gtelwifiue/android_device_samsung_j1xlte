@@ -5,3 +5,4 @@ j1xlte:
   GridUnit: 10
   WebkitDpr: 1
   VibrateDurationExtraMs: 10
+  FlashlightSysfsPath: "/sys/class/leds/leds-sec2/brightness"
