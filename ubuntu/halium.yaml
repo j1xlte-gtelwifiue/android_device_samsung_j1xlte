@@ -4,3 +4,4 @@ j1xlte:
   DeviceType: phone
   GridUnit: 10
   WebkitDpr: 1
+  VibrateDurationExtraMs: 10
